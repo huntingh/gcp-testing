@@ -15,3 +15,4 @@ jobs:
         uses: 'google-github-actions/auth@v1'
         with:
           credentials_json: '${{ secrets.gcp_credentials }}'
+        service_account: 'projectteam14@appspot.gserviceaccount.com'
