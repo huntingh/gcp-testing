@@ -9,10 +9,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: google-github-actions/deploy-appengine@v1
-      - id: 'auth'
-        name: 'Authenticate to Google Cloud'
-        uses: 'google-github-actions/auth@v1'
-        with:
-          credentials_json: '${{ secrets.gcp_credentials }}'
-        service_account: 'projectteam14@appspot.gserviceaccount.com'
+      - uses: google-github-actions/deploy-appengine@v1.2.2
+          with:
+            credentials_json: '${{ secrets.gcp_credentials }}'
