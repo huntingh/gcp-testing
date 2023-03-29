@@ -56,7 +56,7 @@ env:
   REGION: us-east1 # TODO: update Cloud Run service region
 
 jobs:
-  deploy:
+  Auth:
     # Add 'id-token' with the intended permissions for workload identity federation
     permissions:
       contents: 'read'
@@ -72,6 +72,15 @@ jobs:
         uses: 'google-github-actions/auth@v0'
         with:
           credentials_json: '${{ secrets.JSON_CRED }}' 
-      -name: deploy    
-        - id: 'deploy'  
-        uses: 'google-github-actions/deploy-appengine@v1'
+
+      - name: Deploy to App Engine
+        id: deploy
+        uses: google-github-actions/deploy-appengine@v0.2.0
+        with:
+          deliverables: app.yaml cron.yaml
+          version: v1
+          project_id: ${{ secrets.PROJECT }}
+          credentials: ${{ secrets.JSON_CRED }}
+
+      - name: Test
+        run: curl "${{ steps.deploy.outputs.url }}"
