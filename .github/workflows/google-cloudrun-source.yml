@@ -72,6 +72,6 @@ jobs:
         uses: 'google-github-actions/auth@v0'
         with:
           credentials_json: '${{ secrets.JSON_CRED }}' 
-          
-      - id: 'deploy'
-      uses: 'google-github-actions/deploy-appengine@v1'
+      -name: deploy    
+        - id: 'deploy'  
+        uses: 'google-github-actions/deploy-appengine@v1'
