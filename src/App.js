@@ -15,7 +15,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Mother Forker
+          Deploying Works
         </a>
       </header>
     </div>
